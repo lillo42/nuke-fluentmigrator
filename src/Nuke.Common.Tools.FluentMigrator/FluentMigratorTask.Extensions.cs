@@ -114,7 +114,14 @@ namespace Nuke.Common.Tools.FluentMigrator
             toolSettings.Preview = false;
             return toolSettings;
         }
-
+        
+        /// <summary>
+        /// Set the profile to run after executing migrations.
+        /// </summary>
+        /// <param name="toolSettings">The <see cref="T"/>.</param>
+        /// <param name="profile">The <see cref="FluentMigratorTask.FluentMigratorSetting.Profile"/></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>New instance (copy) of <see cref="T"/>.</returns>
         [Pure]
         public static T SetProfile<T>(this T toolSettings, string profile)
             where T : FluentMigratorTask.FluentMigratorSetting
@@ -123,7 +130,15 @@ namespace Nuke.Common.Tools.FluentMigrator
             toolSettings.Profile = profile;
             return toolSettings;
         }
-
+         
+        
+        /// <summary>
+        /// Set database timeout. 
+        /// </summary>
+        /// <param name="toolSettings">The <see cref="T"/>.</param>
+        /// <param name="timeout">The <see cref="FluentMigratorTask.FluentMigratorSetting.Timeout"/></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>New instance (copy) of <see cref="T"/>.</returns>
         [Pure]
         public static T SetTimeout<T>(this T toolSettings, int timeout)
             where T : FluentMigratorTask.FluentMigratorSetting

@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Nuke.Common.Tools.FluentMigrator\Nuke.Common.Tools.FluentMigrator.csproj" />
+  </ItemGroup>
+</Project>

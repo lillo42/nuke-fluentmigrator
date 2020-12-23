@@ -1,0 +1,57 @@
+<Project>
+    <PropertyGroup>
+        <TargetFrameworks>netcoreapp2.1;net472</TargetFrameworks>
+        <LangVersion>preview</LangVersion>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <DebugSymbols>True</DebugSymbols>
+        <DebugType>portable</DebugType>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <Description>Integration between Nuke and FluentMigrator</Description>
+        <Authors>Rafael Lillo</Authors>
+        <PackageTags>Nuke FluentMigrator</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://nuke.build</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/lillo42/nuke-fluentmigrator</PackageProjectUrl>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(TargetFramework.StartsWith('netstandard')) OR $(TargetFramework.StartsWith('netcoreapp'))">
+        <DefineConstants>$(DefineConstants);NETCORE</DefineConstants>
+    </PropertyGroup>
+    
+    
+    <PropertyGroup Condition="$(MSBuildProjectName.EndsWith('Tests'))">
+        <IsPackable>False</IsPackable>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(IsPackable)' != 'False'">
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(TargetFramework.StartsWith('net4'))">
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
+        <PackageReference Include="Nuke.Common" Version="5.0.2" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(MSBuildProjectName.EndsWith('Test'))">
+        <PackageReference Include="coverlet.msbuild" Version="2.7.0" />
+        <PackageReference Include="FluentAssertions" Version="5.9.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0"/>
+        <PackageReference Include="Verify.Xunit" Version="8.4.2" />
+        <PackageReference Include="xunit" Version="2.4.1"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1"/>
+    </ItemGroup>
+</Project>
